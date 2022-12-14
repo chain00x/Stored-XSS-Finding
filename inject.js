@@ -8,16 +8,20 @@ function list_h1(){
     }
 }
 
-    Object.prototype.exist = function(){ if(typeof this !="undefined" && this.length >= 1){return true;}return false;};
-    //检测dom变化
+    
     if(document.documentElement.innerHTML.search(/\\sb"\s7/i)>1||list_h1()){
 
       alert("xss")}
 
-    document.documentElement.addEventListener("DOMSubtreeModified", function(){
+      function test_xss(){
+        if(document.documentElement.innerHTML.search(/\\sb"\s7/i)>1||list_h1()){
 
-    if(document.documentElement.innerHTML.search(/\\sb"\s7/i)>1||list_h1()){
+      alert("xss");
+      document.documentElement.removeEventListener("DOMSubtreeModified", test_xss);
+    }
 
-      alert("xss")}
-      
-      }, false);
+      }
+
+//检测dom变化
+  document.documentElement.addEventListener("DOMSubtreeModified", test_xss, false);
+  
