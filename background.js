@@ -9,6 +9,6 @@ chrome.browserAction.onClicked.addListener(function (tab) {
  }else{
   //turn off...
   chrome.browserAction.setIcon({ path: '1.png'});
-  chrome.browserAction.setBadgeText({ text: '' });
+  chrome.browserAction.setBadgeText({ text: 'OFF' });
  }
 });
