@@ -1,27 +1,35 @@
-function list_h1(){
-    for(i=0;i<document.getElementsByTagName("h1").length;i++)
-    {
-        if(document.getElementsByTagName("h1")[i].textContent.indexOf("sb")!=-1)
-        {
-            return true
-        }
-    }
-}
+let isDoit=true;
 
-    
-    if(document.documentElement.innerHTML.search(/\\sb"\s7/i)>1||list_h1()){
+        function list_h1(){
+            for(i=0;i<document.getElementsByTagName("h1").length;i++)
+            {
+            if(document.getElementsByTagName("h1")[i].textContent.indexOf("sb")!=-1)
+            {
+              return true
+            }
+            }
+            }
 
-      alert("xss")}
 
-      function test_xss(){
-        if(document.documentElement.innerHTML.search(/\\sb"\s7/i)>1||list_h1()){
+        function test_xss1(){
+            if(document.documentElement.innerHTML.search(/\\sb"\s7/i)>1||list_h1())
+            {
+            alert("xss");
+            isDoit=false;
+            }
+            } 
 
-      alert("xss");
-      document.documentElement.removeEventListener("DOMSubtreeModified", test_xss);
-    }
 
-      }
+        function test_xss(){
+            if(isDoit==false){return}
+            if(document.documentElement.innerHTML.search(/\\sb"\s7/i)>1||list_h1())
+            {
+            alert("xss");
+            isDoit=false;
+            }
+            }
+
+test_xss1()
 
 //检测dom变化
-  document.documentElement.addEventListener("DOMSubtreeModified", test_xss, false);
-  
+document.documentElement.addEventListener("DOMSubtreeModified", test_xss, false);
