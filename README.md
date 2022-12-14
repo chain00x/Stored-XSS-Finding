@@ -1,5 +1,4 @@
-# chrom-extension
-chrome插件
+# 存储xss Chrome插件
 
 所有框都插入
 ```
