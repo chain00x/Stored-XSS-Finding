@@ -1,5 +1,14 @@
 let isDoit=true;
 
+find_xss()
+
+function find_xss(){
+    test_xss1()
+    document.documentElement.addEventListener("DOMSubtreeModified", test_xss, false);
+    return !isDoit;
+}
+        
+
         function list_h1(){
             for(i=0;i<document.getElementsByTagName("h1").length;i++)
             {
@@ -16,6 +25,7 @@ let isDoit=true;
             {
             alert("xss");
             isDoit=false;
+            return isDoit;
             }
             } 
 
@@ -26,10 +36,6 @@ let isDoit=true;
             {
             alert("xss");
             isDoit=false;
+            return isDoit;
             }
-            }
-
-test_xss1()
-
-//检测dom变化
-document.documentElement.addEventListener("DOMSubtreeModified", test_xss, false);
+            }       
